@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='tcpflow',
-    version='0.1.0',
+    version='0.1.1',
     description='A wrapper to use the TcpFlow CLI',
     long_description=long_description,
     url='https://github.com/liftitapp/tcpflow.py',

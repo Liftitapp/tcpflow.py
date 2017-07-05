@@ -6,15 +6,16 @@ from typing import Iterator, List, Any, Optional
 
 
 class TcpFlow(Thread):
-    cmd = ['tcpflow', '-p', '-c', '-i', 'en1', 'port', '80']
+    cmd = ['tcpflow', '-p', '-c']
 
-    def __init__(self) -> None:
+    def __init__(self, device: str = 'en1', port: str = '80') -> None:
         super(TcpFlow, self).__init__()
         self.daemon = True
         self.q = Queue()
         self.matches = []  # List[str]
         self.process = subprocess.Popen(
-            TcpFlow.cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            TcpFlow.cmd + ['-i', device, 'port', port],
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         self.gen = self.Generator(self.process)
 
     def __enter__(self) -> object:
