@@ -8,4 +8,3 @@ if __name__ == '__main__':
         conn.request('GET', '/', '', {})
         conn.getresponse()
         print(f"exists? {flow.contains('google.com')}")
-        print(f"exists? {flow.contains('google.com')}")
